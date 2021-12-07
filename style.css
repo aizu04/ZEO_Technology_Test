@@ -1,0 +1,120 @@
+#form-sign-in{
+    border: 1px solid #000000;
+    width: 500px;
+    padding: 30px;
+    margin: 100px auto;
+}
+
+#form-user{
+    display: none;
+    border: 1px solid #000000;
+    width: 500px;
+    min-height: 300px;
+    padding: 30px;
+    margin: 100px auto;
+}
+
+#list-users{
+    display: none;
+    border: 1px solid #000000;
+    width: 1000px;
+    padding: 30px;
+    margin: 100px auto;
+}
+
+.title-form{
+    text-align: center;
+}
+
+.form-row{
+    margin-bottom: 10px;
+}
+
+.form-label-container{
+    float: left;
+    width: 20%;
+    text-align: right;
+    padding: 5px 10px 10px 0;
+}
+
+.form-input-container{
+    float: left;
+    width: 80%;
+    text-align: left;
+    padding: 5px 0 10px 10px;
+}
+
+.input-text{
+    width: 100%;
+    height: 25px;
+}
+
+.input-number{
+    width: 100px;
+    height: 25px;
+}
+
+.form-field-error{
+    color: #ff0000;
+    font-size: 13px;
+}
+
+.btn-action-container{
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.btn-action{
+    background-color: #ffffff;
+    border: 1px solid #000000;
+}
+
+.btn-action:hover{
+    color: #ffffff;
+    background-color: #3c97e0;
+    border: 1px solid #3c97e0;
+}
+
+#btn-save-user{
+    margin-left: 10px;
+}
+
+#btn-save-user:disabled,
+#btn-save-user:disabled:hover,
+#btn-sign-in:disabled,
+#btn-sign-in:disabled:hover{
+    border: 1px solid #7676764d;
+    background-color: #efefef4d;
+    color: #1010104d;
+}
+
+#list-users > table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.list-user-header{
+    width: 25%;
+    padding: 10px 5px 10px 5px;
+    border-bottom: 2px solid #3c97e0;
+}
+
+.list-user-row{
+    border-bottom: 1px solid #ddd;
+}
+
+.list-user-cell{
+    padding: 10px 5px 10px 5px;
+}
+
+#close-session-container{
+    display: none;
+    padding-top: 20px;
+    padding-right: 20px;
+    text-align: right;
+}
+
+#users-password-error{
+    display: none;
+    text-align: center;
+}

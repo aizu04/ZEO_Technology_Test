@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Test Angular</title>
+
+        <!-- Source files -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+        <script src="/rsc/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="/rsc/css/bootstrap.min.css">
+        <script src="/rsc/js/underscore.min.js"></script>
+
+        <script src="cache.js"></script>
+        <script src="controller.js"></script>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    
+    <body>
+        <!-- Botón de cierre de sesión -->
+        <div id="close-session-container">
+            <button id="close-session" class="btn-action" onclick="closeSession()">CERRAR SESIÓN</button>
+        </div>
+
+        <!-- Contenedor de la aplicación del gestor de usuarios -->
+        <div id="user-manager-container" ng-app="userManager" ng-controller="userManagerCtrl">
+
+            <!-- Formulario de inicio de sesión -->
+            <form id="form-sign-in" name="formSignIn">
+                <div class="form-row">
+                    <h4 class="title-form">Acceso Usuarios</h4>
+                </div>
+                <div class="form-row">
+                    <div class="form-label-container">
+                        <label>Email:</label>
+                    </div>
+                    <div class="form-input-container">
+                        <input class="input-text" type="email" name="mail" ng-model="signinmail" required>
+                        <div class="form-field-error" ng-show="formSignIn.mail.$touched && formSignIn.mail.$invalid">*Se requiere rellenar el email.</div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-label-container">
+                        <label>Password:</label>
+                    </div>
+                    <div class="form-input-container">
+                        <input class="input-text" type="password" name="password" ng-model="signinpassword" required>
+                        <div class="form-field-error" ng-show="formSignIn.password.$touched && formSignIn.password.$invalid">*Se requiere rellenar la contraseña.</div>
+                    </div>
+                </div>
+                <div id="users-password-error" class="form-field-error">Usuario y contraseña incorrectos</div>
+                <div class="btn-action-container">
+                    <input 
+                        id="btn-sign-in"
+                        class="btn-action"
+                        type="submit"
+                        value="ENTRAR"
+                        ng-click="signIn(formSignIn.mail, formSignIn.password)"
+                        ng-disabled="formSignIn.mail.$invalid || formSignIn.password.$invalid"
+                    >
+                </div>
+            </form>
+
+            <!-- Formulario de creación de usuario -->
+            <form id="form-user" name="formUser">
+                <div class="form-row">
+                    <h4 class="title-form">Alta de Usuarios</h4>
+                </div>
+                <div class="form-row">
+                    <div class="form-label-container">
+                        <label>Nombre:</label>
+                    </div>
+                    <div class="form-input-container">
+                        <input class="input-text" type="text" name="username" ng-model="username" required>
+                        <div class="form-field-error" ng-show="formUser.username.$touched && formUser.username.$invalid">*Se requiere rellenar el nombre.</div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-label-container">
+                        <label>Edad:</label>
+                    </div>
+                    <div class="form-input-container">
+                        <input class="input-number" type="number" name="userage" ng-model="userage" required>
+                        <div class="form-field-error" ng-show="formUser.userage.$touched && formUser.userage.$invalid">*Se requiere rellenar la edad.</div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-label-container">
+                        <label>Email:</label>
+                    </div>
+                    <div class="form-input-container">
+                        <input class="input-text" type="email" name="usermail" ng-model="usermail" required>
+                        <div class="form-field-error" ng-show="formUser.usermail.$touched && formUser.usermail.$invalid">*El email no es válido.</div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-label-container">
+                        <label>Password:</label>
+                    </div>
+                    <div class="form-input-container">
+                        <input class="input-text" type="password" name="userpassword" ng-model="userpassword" required>
+                        <div class="form-field-error" ng-show="formUser.userpassword.$touched && formUser.userpassword.$invalid">*Se requiere rellenar la contraseña.</div>
+                    </div>
+                </div>
+                <div class="btn-action-container">
+                    <button id="btn-cancel" class="btn-action" ng-click="cancelSaveUser()">CANCELAR</button>
+                    <input 
+                        id="btn-save-user"
+                        class="btn-action"
+                        type="submit"
+                        value="GUARDAR"
+                        ng-click="saveUser()"
+                        ng-disabled="formUser.username.$invalid || formUser.userage.$invalid || formUser.usermail.$invalid || formUser.userpassword.$invalid"
+                    >
+                </div>
+            </form>
+
+            <!-- Listado de usuarios -->
+            <div id="list-users">
+                <div class="btn-action-container">
+                    <button id="btn-add-new-user" class="btn-action" ng-click="showFormNewUser()">NUEVO USUARIO</button>
+                </div>
+
+                <table>
+                    <tr>
+                        <th class="list-user-header">Nombre</th>
+                        <th class="list-user-header">Edad</th>
+                        <th class="list-user-header">Email</th>
+                        <th class="list-user-header">Contraseña</th>
+                    </tr>
+                    <tr class="list-user-row" ng-repeat="user in users">
+                        <td class="list-user-cell">{{ user.username }}</td>
+                        <td class="list-user-cell">{{ user.userage }}</td>
+                        <td class="list-user-cell">{{ user.usermail }}</td>
+                        <td class="list-user-cell">{{ user.userpassword }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
